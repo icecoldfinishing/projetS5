@@ -12,7 +12,7 @@ use Tracy\Debugger;
 
 // uncomment the following line for MySQL
 // $dsn = 'mysql:host=' . 'localhost' . ';dbname=' . 'coolname' . ';charset=utf8mb4';
-$dsn = 'pgsql:host=' . $config['database']['host'] . ';port=' . $config['database']['port'] . ';dbname=' . $config['database']['dbname'];
+ $dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['database']['dbname'] . ';charset=utf8mb4';
 
 // uncomment the following line for SQLite
 // $dsn = 'sqlite:' . $config['database']['file_path'];
@@ -20,7 +20,6 @@ $dsn = 'pgsql:host=' . $config['database']['host'] . ';port=' . $config['databas
 // Uncomment the below lines if you want to add a Flight::db() service
 // In development, you'll want the class that captures the queries for you. In production, not so much.
  $pdoClass = Debugger::$showBar === true ? PdoQueryCapture::class : PdoWrapper::class;
- //$app->register('db', $pdoClass, [ $dsn, $config['database']['user'] ?? null, '' ?? null ]);
  $app->register('db', $pdoClass, [ $dsn, $config['database']['user'] ?? null, $config['database']['password'] ?? null ]);
 
 // Got google oauth stuff? You could register that here
